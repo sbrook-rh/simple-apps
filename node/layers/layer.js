@@ -88,6 +88,12 @@ app.get('/', (request, response) => {
   response.send(messageText + "\n");
 });
 
+app.get('/env', (request, response) => {
+  console.log("phase: root - sending process.env");
+  console.log(process.env); 
+  response.send(process.env);
+});
+
 app.get('/call-layers', (request, response) => {
   if ((skipCallLayersResponses) && (skipCounter++ < 15)) {
     console.log("sending a 503 - " + skipCounter);
